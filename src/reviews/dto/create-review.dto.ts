@@ -1,18 +1,18 @@
-import { isDate, isNumber, isString } from 'class-validator';
+import { IsDate, IsNumber, IsString } from 'class-validator';
 
 export class CreateReviewDto {
-  @isString()
+  @IsString()
   readonly name: string;
-  @isString()
-  readonly type: string;
-  @isString()
-  readonly gender: string;
-  @isDate()
+  @IsNumber()
+  readonly type: number;
+  @IsNumber()
+  readonly gender: number;
+  @IsDate()
   readonly dateThatFinished: Date;
-  @isString()
+  @IsString()
   readonly team: string;
-  @isNumber()
+  @IsNumber()
   readonly score: number;
-  @isNumber()
+  @IsNumber()
   readonly interestingScore: number;
 }

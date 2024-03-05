@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Gender } from './gender.entity';
+import { Type } from 'src/types/entities/type.entity';
 
 @Entity()
 export class Review {
@@ -6,10 +14,12 @@ export class Review {
   id: number;
   @Column()
   name: string;
-  @Column()
-  type: string;
-  @Column()
-  gender: string;
+  @JoinTable()
+  @ManyToMany(() => Type, (type) => type.reviews)
+  type: Type;
+  @JoinTable()
+  @ManyToMany(() => Gender, (gender) => gender.reviews)
+  gender: Gender;
   @Column()
   dateThatFinished: Date;
   @Column()
